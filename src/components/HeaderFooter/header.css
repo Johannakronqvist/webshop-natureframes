@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Mono:wght@300&family=Rock+Salt&display=swap');
+
+:root {
+	--main-color: #FCFBFA; 
+	--accent-color: #343333;
+	--black: #000;
+
+	--header-font: 'Rock Salt';
+	--body-font: 'Red Hat Mono';
+}
+
+header{
+	background-color: var(--accent-color);
+	padding: 1rem;
+	height: 15vw;
+	display: flex;
+	justify-content: space-between;
+}
+
+h1 {
+	background-color: var(--accent-color);
+	font-family: var(--header-font);
+	font-size: 1.2rem;
+}
+
+.iconsContainer {
+	display: flex;
+	background-color: var(--accent-color);
+}
+
+.iconsContainer > div {
+	background-color: #343333;
+	padding: 1rem;
+	font-size: 1.5rem;
+}
+
+.faIcon {
+	background-color: var(--accent-color);
+}
+
+footer {
+	background-color: var(--accent-color);
+	padding: 1rem;
+	height: 8vw;
+}
+
+.footerText {
+	color: var(--main-color);
+	background-color: var(--accent-color);
+	text-align: center;
+	padding: 2rem;
+}
+
