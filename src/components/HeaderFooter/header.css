@@ -25,17 +25,67 @@ h1 {
 
 .iconsContainer {
 	display: flex;
+	align-items: center;
 	background-color: var(--accent-color);
+	height: 2rem;
 }
 
-.iconsContainer > div {
+.iconsContainer a, .iconsContainer div{
 	background-color: #343333;
-	padding: 1rem;
-	font-size: 1.5rem;
+	color: var(--main-color);
+	padding: 0rem 1rem;
+	font-size: 2rem;
+}
+
+.iconContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 .faIcon {
 	background-color: var(--accent-color);
+}
+
+.iconsContainer svg path {
+	color: white;
+}
+
+.iconTexts {
+	font-size: 0.8rem;
+	background-color: var(--accent-color);
+	color: var(--main-color);
+}
+
+.showLogInForm {
+	display: relative; 
+	opacity: 1;
+	text-align: center;
+}
+
+.hideLogInForm {
+	display: none;
+}
+
+.loggedOut {
+	display: none;
+}
+
+.loggedIn {
+	display: block;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.hide {
+	display: none;
+}
+
+.show {
+	display: block;
+	text-align: center;
+	margin: 1rem;
 }
 
 footer {

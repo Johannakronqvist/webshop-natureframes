@@ -1,0 +1,19 @@
+form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding-top: 1rem;
+}
+
+form label, form input {
+	margin: 0.5rem;
+	text-align: start;
+}
+
+.hide {
+	display: none;
+}
+
+.show {
+	display: block;
+}

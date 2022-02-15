@@ -4,10 +4,12 @@ import userEvent from '@testing-library/user-event'
 import Login from './Login'
 import Header from '../HeaderFooter/Header'
 
+
+
 describe('Login component', () => {
 
 	test('that login component renders', () => {
-		render(<Login/>)
+		render(<Login loggedIn={loggedIn} setLoggedIn={setLoggedIn} />)
 	})
 
 	test('that login button is displayed on the start page', () => {
