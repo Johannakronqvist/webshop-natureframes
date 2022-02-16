@@ -17,3 +17,7 @@ form label, form input {
 .show {
 	display: block;
 }
+
+.unValid {
+	border: 2px solid red;
+}

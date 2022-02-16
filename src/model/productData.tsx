@@ -14,14 +14,15 @@ import Ocean from '../images/ocean.jpg'
 import WinterForest from '../images/winter-forest.jpg'
 
 const productData: Product[] = [
+
 	{
 		id: 1,
-		name: 'Beach day', 
-		description: 'Photograph of magestic mountain cliffs next to the sandy beach on a beatiful island.',
+		name: 'Elephant', 
+		description: 'Photo art of an elephant. A gorgeous black-and-white poster of a elephant photographed in Namibia.',
 		price: 349, 
-		image: BeachMountains,
-		quantity: 16, 
-		theme_words: ['beach', 'mountains', 'summer', 'island', 'exotic']
+		image: Elephant,
+		quantity: 30, 
+		theme_words: ['animal', 'elephant', 'exotic']
 	}, 
 	{
 		id: 2,
@@ -43,12 +44,12 @@ const productData: Product[] = [
 	}, 
 	{
 		id: 4,
-		name: 'Elephant', 
-		description: 'Photo art of an elephant. A gorgeous black-and-white poster of a elephant photographed in Namibia.',
+		name: 'Beach day', 
+		description: 'Photograph of magestic mountain cliffs next to the sandy beach on a beatiful island.',
 		price: 349, 
-		image: Elephant,
-		quantity: 30, 
-		theme_words: ['animal', 'elephant', 'exotic']
+		image: BeachMountains,
+		quantity: 16, 
+		theme_words: ['beach', 'mountains', 'summer', 'island', 'exotic']
 	}, 
 	{
 		id: 5,

@@ -17,7 +17,7 @@ const userData: User[] = [
 		cart_items: [] 
 	},
 	{
-		id: 1,
+		id: 2,
 		first_name: 'Nikolaj',
 		last_name: 'Krantz',
 		email: 'krantz.niko@mail.nu',
