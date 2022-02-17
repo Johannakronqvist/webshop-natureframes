@@ -1,33 +1,27 @@
-import { userInfo } from 'os'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import ProductData from '../model/productData'
-import userData from '../model/userData'
+import { Product, User } from '../model/Interfaces'
 import './startPage.css'
 
-export default function StartPage() {
-	const [userCart, setUserCart] = useState([])
-	const [activeUser, setActiveuser] = useState([])
+interface Props {
+	productData: Product[]
+	userData: User[]
+}
 
-	function saveToCart(product: object) {
-		const retriveStorage = JSON.parse(localStorage.getItem('loggedin') || '')
-		console.log('retrivestorage', retriveStorage)
+export default function StartPage( {productData, userData}: Props ) {
 
-		if (retriveStorage) {
-			const activeUserId = userData.filter( user => {
-			return user.id === retriveStorage.id
-		})
+	function saveToCart(product: Product) {
+		let updateUserCart = JSON.parse(localStorage.getItem('loggedin') || '')
 
-		console.log('activeUser', activeUserId)
-		}
-		
+		updateUserCart.cart.push(product.id)
+		localStorage.setItem('loggedin', JSON.stringify(updateUserCart))
 	}
 
 	return (
 		<div>
 			
 			<ul>
-				{ProductData.map( product => ( 
+				{productData.map( (product: Product) => ( 
 					<li key={product.id}>
 						<img src={product.image} alt={product.name}/>
 						<h2>{product.name}</h2>

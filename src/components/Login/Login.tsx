@@ -1,6 +1,5 @@
 import React, { FormEvent, useState, useEffect } from 'react'
 import './login.css'
-import userData from '../../model/userData'
 
 interface Props {
 	loggedIn: boolean,
@@ -17,12 +16,21 @@ export default function Login({loggedIn, setLoggedIn, setSignIn}: Props) {
 	const handleSubmit = ( event: FormEvent ) => {
 		event.preventDefault()
 
+		const userData = JSON.parse(localStorage.getItem('userdata') || '[]')
+		
 			for( let i = 0; i < userData.length; i++) {
-				if( userData[i].user_name === username && userData[i].password === password) {
-					console.log('username and password exist')
-					const userName = { name: userData[i].first_name, id: userData[i].id, loggedin: true}
+				if( userData[i].user_name === username && userData[i].password === password ) {
+
+					const activeUser = {
+						 name: userData[i].first_name, 
+						 username: userData[i].user_name, 
+						 id: userData[i].id, 
+						 loggedin: true, 
+						 cart: userData[i].cart_items 
+						}
+
 					setLoggedIn(true)
-					localStorage.setItem( 'loggedin', JSON.stringify(userName) )
+					localStorage.setItem( 'loggedin', JSON.stringify(activeUser) )
 					setSignIn('hideLogInForm')
 					setvalidationPassword('')
 					setvalidationUserName('')

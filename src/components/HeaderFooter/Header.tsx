@@ -26,13 +26,13 @@ export default function Header() {
 		
 	}, [loggedIn])
 
-		const handleClick = () => {
-		console.log('logging out')
+	const handleClick = () => {
+	console.log('logging out')
 
-		const loggedOutUser = { name: '', loggedin: false }
+	const loggedOutUser = { name: '', id: '', loggedin: false }
 
-		setLoggedIn(false)
-		localStorage.setItem( 'loggedin', JSON.stringify(loggedOutUser) )
+	setLoggedIn(false)
+	localStorage.setItem( 'loggedin', JSON.stringify(loggedOutUser) )
 	}
 
 	return (

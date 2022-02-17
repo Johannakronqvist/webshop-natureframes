@@ -7,11 +7,11 @@ import Cart from './Cart'
 import Header from '../HeaderFooter/Header'
 
 describe('Cart page component', () => {
-	test('test that cart component renders', () => {
-		render(
-			<MemoryRouter> <Cart/> </MemoryRouter>
-		)
-	} )
+	// test('test that cart component renders', () => {
+	// 	render(
+	// 		<MemoryRouter> <Cart/> </MemoryRouter>
+	// 	)
+	// } )
 
 	// test('test that clicked product is displayed in the cart', () => {
 	// 	render(<Header/>)		
