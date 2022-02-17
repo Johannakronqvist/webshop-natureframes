@@ -9,7 +9,7 @@
 	--body-font: 'Red Hat Mono';
 }
 
-main {
+.container {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	grid-template-areas: 
@@ -27,20 +27,21 @@ main {
 	grid-area: right-section;
 }
 
-h2 {
+.cartItemsContainer h2 {
 	font-size: 1.5rem;
 	padding-bottom: 1rem;
 }
 
-ul {
+.cartItemsContainer {
 	display: flex;
+	flex-wrap: wrap;
 	flex-direction: column;
 	align-items: flex-start;
 	padding: 0;
 	margin: 0;
 }
 
-li {
+.cartItemsContainer li {
 	padding: 0;
 	margin: 1rem;
 	height: 150px;
@@ -49,20 +50,22 @@ li {
 	align-items: flex-start;
 }
 
-li img {
+.cartItemsContainer li img {
 	margin: 0rem ;
+	height: 100%;
+	border: 2px solid black;
 }
 
-li h2, li p{
+.cartItemsContainer li h2, .cartItemsContainer li p {
 	font-size: 90%;
 	margin: 1rem ;
 }
 
-li section {
+.cartItemsContainer li section {
 	margin: 1rem;
 }
 
-li section button {
+.cartItemsContainer li section button {
 	padding: 1px;
 	border: 1px solid;
 }

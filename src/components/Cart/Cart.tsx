@@ -31,12 +31,12 @@ export default function Cart( {productData, userData}: Props ) {
 
 	return (
 		<>
-		<main>
+		<div className='container'>
 			<section className='leftSection'>
 				<h2>Cart</h2>
 				<Link to='/'> Continue shopping </Link>
 
-				<ul>
+				<ul className='cartItemsContainer'>
 					{productsInCart.map( (product: Product) => ( 
 						<li key={product.id}>
 							<img src={product.image} alt={product.name}/>
@@ -53,7 +53,7 @@ export default function Cart( {productData, userData}: Props ) {
 				<h3>Total</h3>
 			
 			</section>
-		</main>
+		</div>
 		</>
 	)
 }

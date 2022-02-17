@@ -20,13 +20,14 @@ export default function StartPage( {productData, userData}: Props ) {
 	return (
 		<div>
 			
-			<ul>
+			<ul className='productContainer'>
 				{productData.map( (product: Product) => ( 
 					<li key={product.id}>
 						<img src={product.image} alt={product.name}/>
 						<h2>{product.name}</h2>
 						<p>{product.price} sek </p>
-						<button onClick={ () => saveToCart(product) } >add to cart</button>
+						<p className='stock'>Left in stock: 30</p>
+						<button className='addToCartBtn' onClick={ () => saveToCart(product) } >add to cart</button>
 					</li>
 				))}
 			</ul>
