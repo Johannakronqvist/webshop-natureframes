@@ -10,8 +10,6 @@ import Footer from './components/HeaderFooter/Footer'
 
 function App() {
 
-	
-
 	const [productData, setProductData] = useState([])
 	const [userData, setUserData] = useState([])
 
@@ -34,16 +32,15 @@ function App() {
 			setUserData(getUsers)
 		}
 
-	}, [])
-
+	}, []) 
 
   return (
     <div className="App">
 		
 		<Header/>
 		<Routes>
-			<Route path='/' element={<StartPage productData={productData} userData={userData} />} />
-			<Route path='cart' element={<Cart productData={productData} userData={userData}/>} />
+			<Route path='/' element={<StartPage productData={productData} setProductData={setProductData} userData={userData} />} />
+			<Route path='cart' element={<Cart productData={productData} setProductData={setProductData} userData={userData}/>} />
 		</Routes>
 		<Footer/> 
 		

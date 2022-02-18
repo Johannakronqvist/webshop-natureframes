@@ -5,10 +5,11 @@ import { Product, User } from '../../model/Interfaces'
 
 interface Props {
 	productData: Product[]
+	setProductData: (val: any) => void
 	userData: User[]
 }
 
-export default function Cart( {productData, userData}: Props ) {
+export default function Cart( {productData, setProductData, userData}: Props ) {
 	const [productsInCart, setProductsInCart] = useState<Product[]>([])
 
 	useEffect( () => {
@@ -19,6 +20,11 @@ export default function Cart( {productData, userData}: Props ) {
 
 		getProductData.map( (product: Product) => {
 			getCartData.forEach( (id: number) => {
+
+				//om flera av samma id finns lämna bara tillbaks en produkt?
+				//strukturera om datan i cart
+
+
 				if(product.id === id) {
 					productArray.push(product)
 				}
@@ -28,6 +34,14 @@ export default function Cart( {productData, userData}: Props ) {
 		setProductsInCart(productArray)
 
 	}, [])
+
+	function decreaseSaldo() {
+		console.log('decrease saldo')
+	}
+
+	function increaseSaldo() {
+		console.log('decrease saldo')
+	}
 
 	return (
 		<>
@@ -43,7 +57,7 @@ export default function Cart( {productData, userData}: Props ) {
 							<div>
 							<h2>{product.name}</h2>
 							<p>{product.price} sek </p>
-							<section> <button>-</button> <span>0</span> <button>+</button> </section>
+							<section> <button onClick={ () => increaseSaldo }>-</button> <span>0</span> <button onClick={ () => decreaseSaldo }>+</button> </section>
 							</div>
 						</li>
 						))}

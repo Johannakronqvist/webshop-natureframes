@@ -67,33 +67,33 @@ const userData = [{
 
 describe('Start page component', () => { 
 
-	test('that start page component renders all products', () => {
-		render(<StartPage productData={productData} userData={userData}/>)
+	// test('that start page component renders all products', () => {
+	// 	render(<StartPage productData={productData} userData={userData}/>)
 
-		let productCounter = productData.length
+	// 	let productCounter = productData.length
 
-		const posters = screen.getAllByRole('img')
-		console.log('post length', posters.length)
+	// 	const posters = screen.getAllByRole('img')
+	// 	console.log('post length', posters.length)
 
-		expect(posters).toHaveLength(productCounter)
-	})
+	// 	expect(posters).toHaveLength(productCounter)
+	// })
 
-	test('that product names are displayed', () => {
-		render(<StartPage productData={productData} userData={userData}/>)
+	// test('that product names are displayed', () => {
+	// 	render(<StartPage productData={productData} userData={userData}/>)
 
-		const name = screen.getByText('Deer in autumn')
+	// 	const name = screen.getByText('Deer in autumn')
 
-		expect(name).toBeInTheDocument()
-	})
+	// 	expect(name).toBeInTheDocument()
+	// })
 
-	test('that price is displayed with a product', () => {
-		render(<StartPage productData={productData} userData={userData}/>)
+	// test('that price is displayed with a product', () => {
+	// 	render(<StartPage productData={productData} userData={userData}/>)
 
-		const [price] = screen.getAllByText('399 sek')
-		console.log('price', price)
+	// 	const [price] = screen.getAllByText('399 sek')
+	// 	console.log('price', price)
 
-		expect(price).toBeInTheDocument()
+	// 	expect(price).toBeInTheDocument()
 
-	})
+	// })
 
 })

@@ -14,7 +14,7 @@ const userData: User[] = [
 		user_name: 'Karin75',
 		password: '12345',
 		logedin: false,
-		cart_items: [] 
+		cart_items: []
 	},
 	{
 		id: 2,
@@ -29,7 +29,7 @@ const userData: User[] = [
 		user_name: 'Niko_K',
 		password: '23456',
 		logedin: false,
-		cart_items: [] 
+		cart_items: []
 	}
 ] 
 
