@@ -14,8 +14,10 @@ export default function StartPage({
 	productData,
 	setProductData,
 	userData,
-	decreaseStock
+	decreaseStock,
 }: Props) {
+	const [searchValue, setSearchValue] = useState('');
+
 	function saveToCart(product: Product) {
 		let updateUserCart = JSON.parse(localStorage.getItem('loggedin') || '[]');
 		let cart = updateUserCart.cart;
@@ -63,15 +65,26 @@ export default function StartPage({
 		decreaseStock(product);
 	}
 
+	let productToShow = !searchValue
+		? productData
+		: productData.filter((item) => {
+				return item.name.toLowerCase().includes(searchValue.toLowerCase());
+		  });
+
 	return (
 		<div>
+			<section className='searchBoxContainer'>
+				<input onChange={(e) => setSearchValue(e.target.value)} type='text' />
+			</section>
 			<ul className='productContainer'>
-				{productData.map((product: Product) => (
+				{productToShow.map((product: Product) => (
 					<li key={product.id}>
 						<img src={product.image} alt={product.name} />
 						<h2>{product.name}</h2>
 						<p>{product.price} sek </p>
-						<p className='stock'>Left in stock: {product.quantity - product.orderedQuantity}</p>
+						<p className='stock'>
+							Left in stock: {product.quantity - product.orderedQuantity}
+						</p>
 						<button
 							className='addToCartBtn'
 							onClick={() => saveToCart(product)}>

@@ -9,6 +9,10 @@
 	--body-font: 'Red Hat Mono';
 }
 
+.searchBox {
+	background-color: var(--black);
+}
+
 .productContainer h2, p {
 	font-size: 1rem;
 }
