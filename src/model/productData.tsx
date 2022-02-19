@@ -21,7 +21,8 @@ const productData: Product[] = [
 		description: 'Photo art of an elephant. A gorgeous black-and-white poster of a elephant photographed in Namibia.',
 		price: 349, 
 		image: Elephant,
-		quantity: 30, 
+		quantity: 30,
+		orderedQuantity: 0,
 		theme_words: ['animal', 'elephant', 'exotic']
 	}, 
 	{
@@ -31,6 +32,7 @@ const productData: Product[] = [
 		price: 299, 
 		image: CherryBlossom,
 		quantity: 20, 
+		orderedQuantity: 0,
 		theme_words: ['cherry', 'flowers', 'spring', 'sky']
 	}, 
 	{
@@ -40,6 +42,7 @@ const productData: Product[] = [
 		price: 399, 
 		image: Deer,
 		quantity: 10, 
+		orderedQuantity: 0,
 		theme_words: ['animal', 'deer', 'woodland', 'autumn']
 	}, 
 	{
@@ -48,7 +51,8 @@ const productData: Product[] = [
 		description: 'Photograph of magestic mountain cliffs next to the sandy beach on a beatiful island.',
 		price: 349, 
 		image: BeachMountains,
-		quantity: 16, 
+		quantity: 16,
+		orderedQuantity: 0,
 		theme_words: ['beach', 'mountains', 'summer', 'island', 'exotic']
 	}, 
 	{
@@ -58,6 +62,7 @@ const productData: Product[] = [
 		price: 399, 
 		image: AutumnMountains,
 		quantity: 16, 
+		orderedQuantity: 0,
 		theme_words: ['mountains', 'landscape', 'autumn', 'fall']
 	},
 	{
@@ -67,6 +72,7 @@ const productData: Product[] = [
 		price: 299, 
 		image: Autumn,
 		quantity: 12, 
+		orderedQuantity: 0,
 		theme_words: ['autumn', 'fall', 'woodland', 'forest']
 	}, 
 	{
@@ -75,7 +81,8 @@ const productData: Product[] = [
 		description: 'Quirky photo art of an inflatable flamingo in the ocean.',
 		price: 299, 
 		image: Flamingo,
-		quantity: 12, 
+		quantity: 12,
+		orderedQuantity: 0,
 		theme_words: ['flamingo', 'ocean', 'water']
 	}, 
 	{
@@ -85,6 +92,7 @@ const productData: Product[] = [
 		price: 349, 
 		image: Forest,
 		quantity: 32,
+		orderedQuantity: 0,
 		theme_words: ['forest', 'woodland']
 	}, 
 	{
@@ -94,6 +102,7 @@ const productData: Product[] = [
 		price: 399, 
 		image: LilyPad,
 		quantity: 32,
+		orderedQuantity: 0,
 		theme_words: ['water lilie', 'flower', 'lily pad', 'water']
 	}, 
 	{
@@ -103,6 +112,7 @@ const productData: Product[] = [
 		price: 399, 
 		image: NightMountains,
 		quantity: 26,
+		orderedQuantity: 0,
 		theme_words: ['landscape', 'mountain', 'night']
 	}, 
 	{
@@ -112,6 +122,7 @@ const productData: Product[] = [
 		price: 349, 
 		image: OceanTail,
 		quantity: 14,
+		orderedQuantity: 0,
 		theme_words: ['ocean', 'whale', 'animal', 'water']
 	}, 
 	{
@@ -121,6 +132,7 @@ const productData: Product[] = [
 		price: 299, 
 		image: Ocean,
 		quantity: 40,
+		orderedQuantity: 0,
 		theme_words: ['ocean', 'beach', 'water', 'exotic']
 	}, 
 	{
@@ -130,6 +142,7 @@ const productData: Product[] = [
 		price: 349, 
 		image: WinterForest,
 		quantity: 29,
+		orderedQuantity: 0,
 		theme_words: ['woodland', 'winter', 'forest']
 	}
 

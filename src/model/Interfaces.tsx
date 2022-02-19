@@ -22,5 +22,6 @@ export interface Product {
 	price: number;
 	image: string;
 	quantity: number;
+	orderedQuantity: number;
 	theme_words: string[];
 }

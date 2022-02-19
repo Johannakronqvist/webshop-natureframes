@@ -25,18 +25,22 @@ export default function Cart({ productData, setProductData, userData, decreaseSt
 		const getCartData = JSON.parse(
 			localStorage.getItem('loggedin') || '[]'
 		).cart;
+
 		const getProductData = JSON.parse(
 			localStorage.getItem('productdata') || '[]'
 		);
+
 		let productArray: Product[] = [];
 
-		getProductData.map((product: Product) => {
-			getCartData.forEach((cartObject: Cart) => {
-				if (product.id === cartObject.id) {
-					productArray.push(product);
-				}
+		if(getCartData){
+			getProductData.map((product: Product) => {
+				getCartData.forEach((cartObject: Cart) => {
+					if (product.id === cartObject.id) {
+						productArray.push(product);
+					}
+				});
 			});
-		});
+		}
 
 		setProductsInCart(productArray);
 		
@@ -88,6 +92,11 @@ export default function Cart({ productData, setProductData, userData, decreaseSt
 		setProductsInCart(productArray);
 	};
 
+	let total = 0;
+	productsInCart.forEach(el => {
+		total += el.price * el.orderedQuantity
+	})
+
 
 	return (
 		<>
@@ -105,7 +114,7 @@ export default function Cart({ productData, setProductData, userData, decreaseSt
 									<p>{product.price} sek </p>
 									<section>
 										<button onClick={() => increaseSaldo(product)}>-</button>
-										<span> {product.quantity}</span>
+										<span> {product.orderedQuantity}</span>
 										<button onClick={() => decreaseSaldo(product)}>+</button>
 									</section>
 								</div>
@@ -114,7 +123,9 @@ export default function Cart({ productData, setProductData, userData, decreaseSt
 					</ul>
 				</section>
 				<section className='rightSection'>
-					<h3>Total</h3>
+					<h3>Total: {total}</h3>
+
+
 				</section>
 			</div>
 		</>

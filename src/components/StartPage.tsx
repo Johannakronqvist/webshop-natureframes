@@ -20,7 +20,7 @@ export default function StartPage({
 		let updateUserCart = JSON.parse(localStorage.getItem('loggedin') || '[]');
 		let cart = updateUserCart.cart;
 
-		if (cart == undefined) {
+		if (cart === undefined) {
 			const loggedOutUserObject = {
 				name: '',
 				username: '',
@@ -71,7 +71,7 @@ export default function StartPage({
 						<img src={product.image} alt={product.name} />
 						<h2>{product.name}</h2>
 						<p>{product.price} sek </p>
-						<p className='stock'>Left in stock: {product.quantity}</p>
+						<p className='stock'>Left in stock: {product.quantity - product.orderedQuantity}</p>
 						<button
 							className='addToCartBtn'
 							onClick={() => saveToCart(product)}>

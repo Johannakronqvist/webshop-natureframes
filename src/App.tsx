@@ -38,7 +38,13 @@ function App() {
 	}, []);
 
 	function decreaseStock(productObject: Product) {
-		const newStock = productObject.quantity - 1;
+		let newStock;
+		
+		if(productObject.orderedQuantity < productObject.quantity){
+			newStock = productObject.orderedQuantity + 1;
+		} else {
+			newStock = productObject.orderedQuantity;
+		}
 
 		let getProductData = JSON.parse(
 			localStorage.getItem('productdata') || '[]'
@@ -49,7 +55,7 @@ function App() {
 		);
 
 		if (productIndex !== -1) {
-			getProductData[productIndex].quantity = newStock;
+			getProductData[productIndex].orderedQuantity = newStock;
 		}
 
 		localStorage.setItem('productdata', JSON.stringify(getProductData));
@@ -58,7 +64,13 @@ function App() {
 	}
 
 	function increaseStock(productObject: Product) {
-		const newStock = productObject.quantity + 1;
+		let newStock;
+
+		if(productObject.orderedQuantity > 0 ) {
+			newStock = productObject.orderedQuantity - 1;
+		} else {
+			newStock = productObject.orderedQuantity
+		}
 
 		let getProductData = JSON.parse(
 			localStorage.getItem('productdata') || '[]'
@@ -69,7 +81,7 @@ function App() {
 		);
 
 		if (productIndex !== -1) {
-			getProductData[productIndex].quantity = newStock;
+			getProductData[productIndex].orderedQuantity = newStock;
 		}
 
 		localStorage.setItem('productdata', JSON.stringify(getProductData));
