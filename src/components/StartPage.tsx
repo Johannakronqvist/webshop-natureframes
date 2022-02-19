@@ -12,38 +12,52 @@ interface Props {
 export default function StartPage( {productData, setProductData, userData}: Props ) {
 
 	function saveToCart(product: Product) {
+
 		let updateUserCart = JSON.parse(localStorage.getItem('loggedin') || '[]')
 		let cart = updateUserCart.cart
 
-		if ( cart.length === 0 ) {
+		if( cart == undefined) {
+			const loggedOutUserObject = {
+					name: '', 
+					username: '', 
+					id: '', 
+					loggedin: false, 
+					cart: [ {id: product.id, quantity: 1} ]
+				}
+
+			localStorage.setItem('loggedin', JSON.stringify(loggedOutUserObject) )
+
+		} else {
+
+		if ( cart.length === 0 ) { 
 			const cartObject = {
 				id: product.id, 
 				quantity: 1
 			}
 			
-			const updateCart = updateUserCart.cart.push(cartObject)
+			updateUserCart.cart.push(cartObject)
 			localStorage.setItem('loggedin', JSON.stringify(updateUserCart))
 
 		} else {
-			cart.forEach( (cartObject: Cart ) => {
 
-				if( cartObject.id === product.id ) {
-					const cartObjectIndex = cart.findIndex( (cartObject: Cart ) => cartObject.id === product.id )
-				
-					updateUserCart.cart[cartObjectIndex].quantity += 1
-	
-					localStorage.setItem('loggedin', JSON.stringify(updateUserCart))
-	
-				} else {
-					const cartObject = {
-						id: product.id, 
-						quantity: 1
-					}
+			const findCartItem = updateUserCart.cart.find( (cartObject: Cart) => cartObject.id === product.id) 
 
-					const updateCart = updateUserCart.cart.push(cartObject)
-					localStorage.setItem('loggedin', JSON.stringify(updateUserCart))
+			if(findCartItem) {
+				findCartItem.quantity += 1
+
+				localStorage.setItem('loggedin', JSON.stringify(updateUserCart))
+
+			} else {
+				const cartObject = {
+				 id: product.id, 
+				 quantity: 1
 				}
-			})	
+		
+				updateUserCart.cart.push(cartObject)
+				localStorage.setItem('loggedin', JSON.stringify(updateUserCart))
+
+			}
+		}
 		}
 
 		decreaseStock(product)

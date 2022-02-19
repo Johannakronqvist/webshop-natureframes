@@ -28,8 +28,9 @@ export default function Header() {
 
 	const handleClick = () => {
 	console.log('logging out')
+	const getCart = JSON.parse(localStorage.getItem('loggedin') || '[]').cart
 
-	const loggedOutUser = { name: '', id: '', loggedin: false }
+	const loggedOutUser = { name: '', id: '', loggedin: false, cart: getCart }
 
 	setLoggedIn(false)
 	localStorage.setItem( 'loggedin', JSON.stringify(loggedOutUser) )

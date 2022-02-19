@@ -17,6 +17,7 @@ export default function Login({loggedIn, setLoggedIn, setSignIn}: Props) {
 		event.preventDefault()
 
 		const userData = JSON.parse(localStorage.getItem('userdata') || '[]')
+		const cartData = JSON.parse(localStorage.getItem('loggedin') || '[]')
 		
 			for( let i = 0; i < userData.length; i++) {
 				if( userData[i].user_name === username && userData[i].password === password ) {
@@ -26,7 +27,7 @@ export default function Login({loggedIn, setLoggedIn, setSignIn}: Props) {
 						 username: userData[i].user_name, 
 						 id: userData[i].id, 
 						 loggedin: true, 
-						 cart: userData[i].cart_items 
+						 cart: cartData.cart ? cartData.cart : userData[i].cart_items 
 						}
 
 					setLoggedIn(true)

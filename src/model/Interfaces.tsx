@@ -22,5 +22,5 @@ export interface Product {
 	price: number;
 	image: string;
 	quantity: number;
-	theme_words: Cart[];
+	theme_words: string[];
 }
