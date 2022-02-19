@@ -1,51 +1,113 @@
 import React, { useEffect, useState } from 'react';
-import { Routes, Route} from 'react-router-dom'
-import products from './model/productData'
-import users from './model/userData'
+import { Routes, Route } from 'react-router-dom';
+import products from './model/productData';
+import users from './model/userData';
 import './App.css';
-import Header from './components/HeaderFooter/Header'
-import StartPage from './components/StartPage'
-import Cart from './components/Cart/Cart'
-import Footer from './components/HeaderFooter/Footer' 
+import Header from './components/HeaderFooter/Header';
+import StartPage from './components/StartPage';
+import Cart from './components/Cart/Cart';
+import Footer from './components/HeaderFooter/Footer';
+import {Product} from './model/Interfaces'
 
 function App() {
+	const [productData, setProductData] = useState([]);
+	const [userData, setUserData] = useState([]);
 
-	const [productData, setProductData] = useState([])
-	const [userData, setUserData] = useState([])
-
-	useEffect( () => {
-		if(!localStorage.getItem('productdata')) {
-			localStorage.setItem('productdata', JSON.stringify(products))
-			const setProducts = JSON.parse(localStorage.getItem('productdata') || '[]')
-			setProductData(setProducts)
+	useEffect(() => {
+		if (!localStorage.getItem('productdata')) {
+			localStorage.setItem('productdata', JSON.stringify(products));
+			const setProducts = JSON.parse(
+				localStorage.getItem('productdata') || '[]'
+			);
+			setProductData(setProducts);
 		} else {
-			const getProducts = JSON.parse(localStorage.getItem('productdata') || '[]')
-			setProductData(getProducts)
+			const getProducts = JSON.parse(
+				localStorage.getItem('productdata') || '[]'
+			);
+			setProductData(getProducts);
 		}
 
-		if(!localStorage.getItem('userdata')) {
-			localStorage.setItem('userdata', JSON.stringify(users))
-			const setUsers = JSON.parse(localStorage.getItem('userdata') || '[]')
-			setUserData(setUsers)
+		if (!localStorage.getItem('userdata')) {
+			localStorage.setItem('userdata', JSON.stringify(users));
+			const setUsers = JSON.parse(localStorage.getItem('userdata') || '[]');
+			setUserData(setUsers);
 		} else {
-			const getUsers = JSON.parse(localStorage.getItem('userdata') || '[]')
-			setUserData(getUsers)
+			const getUsers = JSON.parse(localStorage.getItem('userdata') || '[]');
+			setUserData(getUsers);
+		}
+	}, []);
+
+	function decreaseStock(productObject: Product) {
+		const newStock = productObject.quantity - 1;
+
+		let getProductData = JSON.parse(
+			localStorage.getItem('productdata') || '[]'
+		);
+
+		const productIndex = getProductData.findIndex(
+			(product: Product) => product.id === productObject.id
+		);
+
+		if (productIndex !== -1) {
+			getProductData[productIndex].quantity = newStock;
 		}
 
-	}, []) 
+		localStorage.setItem('productdata', JSON.stringify(getProductData));
 
-  return (
-    <div className="App">
-		
-		<Header/>
-		<Routes>
-			<Route path='/' element={<StartPage productData={productData} setProductData={setProductData} userData={userData} />} />
-			<Route path='cart' element={<Cart productData={productData} setProductData={setProductData} userData={userData}/>} />
-		</Routes>
-		<Footer/> 
-		
-    </div>
-  );
+		setProductData(getProductData);
+	}
+
+	function increaseStock(productObject: Product) {
+		const newStock = productObject.quantity + 1;
+
+		let getProductData = JSON.parse(
+			localStorage.getItem('productdata') || '[]'
+		);
+
+		const productIndex = getProductData.findIndex(
+			(product: Product) => product.id === productObject.id
+		);
+
+		if (productIndex !== -1) {
+			getProductData[productIndex].quantity = newStock;
+		}
+
+		localStorage.setItem('productdata', JSON.stringify(getProductData));
+
+		setProductData(getProductData);
+	}
+
+	return (
+		<div className='App'>
+			<Header />
+			<Routes>
+				<Route
+					path='/'
+					element={
+						<StartPage
+							productData={productData}
+							setProductData={setProductData}
+							userData={userData}
+							decreaseStock={decreaseStock}
+						/>
+					}
+				/>
+				<Route
+					path='cart'
+					element={
+						<Cart
+							productData={productData}
+							setProductData={setProductData}
+							userData={userData}
+							decreaseStock={decreaseStock}
+							increaseStock={increaseStock}
+						/>
+					}
+				/>
+			</Routes>
+			<Footer />
+		</div>
+	);
 }
 
 export default App;

@@ -2,11 +2,14 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './cart.css';
 import { Product, User } from '../../model/Interfaces';
+import productData from '../../model/productData'
 
 interface Props {
 	productData: Product[];
 	setProductData: (val: any) => void;
 	userData: User[];
+	decreaseStock: (val: any) => void;
+	increaseStock: (val: any) => void;
 }
 
 interface Cart {
@@ -14,7 +17,7 @@ interface Cart {
 	quantity: number;
 }
 
-export default function Cart({ productData, setProductData, userData }: Props) {
+export default function Cart({ productData, setProductData, userData, decreaseStock, increaseStock }: Props) {
 	const [productsInCart, setProductsInCart] = useState<Product[]>([]);
 
 	useEffect(() => {
@@ -36,15 +39,55 @@ export default function Cart({ productData, setProductData, userData }: Props) {
 		});
 
 		setProductsInCart(productArray);
+		
 	}, []);
 
-	function decreaseSaldo() {
-		console.log('decrease saldo');
+	function decreaseSaldo(product: Product) {
+		const copyProduct = product
+		decreaseStock(copyProduct) 
+
+		const getCartData = JSON.parse(
+			localStorage.getItem('loggedin') || '[]'
+		).cart;
+		const getProductData = JSON.parse(
+			localStorage.getItem('productdata') || '[]'
+		);
+		let productArray: Product[] = [];
+
+		getProductData.map((product: Product) => {
+			getCartData.forEach((cartObject: Cart) => {
+				if (product.id === cartObject.id) {
+					productArray.push(product);
+				}
+			});
+		});
+
+		setProductsInCart(productArray);
 	}
 
-	const increaseSaldo = () => {
-		console.log('increase saldo');
+	const increaseSaldo = (product: Product) => {
+		const copyProduct = product
+		increaseStock(copyProduct)
+
+		const getCartData = JSON.parse(
+			localStorage.getItem('loggedin') || '[]'
+		).cart;
+		const getProductData = JSON.parse(
+			localStorage.getItem('productdata') || '[]'
+		);
+		let productArray: Product[] = [];
+
+		getProductData.map((product: Product) => {
+			getCartData.forEach((cartObject: Cart) => {
+				if (product.id === cartObject.id) {
+					productArray.push(product);
+				}
+			});
+		});
+
+		setProductsInCart(productArray);
 	};
+
 
 	return (
 		<>
@@ -61,9 +104,9 @@ export default function Cart({ productData, setProductData, userData }: Props) {
 									<h2>{product.name}</h2>
 									<p>{product.price} sek </p>
 									<section>
-										<button onClick={increaseSaldo}>-</button>
-										<span>0</span>
-										<button onClick={() => decreaseSaldo()}>+</button>
+										<button onClick={() => increaseSaldo(product)}>-</button>
+										<span> {product.quantity}</span>
+										<button onClick={() => decreaseSaldo(product)}>+</button>
 									</section>
 								</div>
 							</li>
