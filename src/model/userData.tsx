@@ -15,21 +15,6 @@ const userData: User[] = [
 		password: '12345',
 		logedin: false,
 		cart_items: []
-	},
-	{
-		id: 2,
-		first_name: 'Nikolaj',
-		last_name: 'Krantz',
-		email: 'krantz.niko@mail.nu',
-		adress: {
-			street: 'Bergkulla 5', 
-			area_code: 78654, 
-			city: 'Bagarstad',
-		},
-		user_name: 'Niko_K',
-		password: '23456',
-		logedin: false,
-		cart_items: []
 	}
 ] 
 

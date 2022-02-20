@@ -14,3 +14,11 @@
 5. Som kund vill jag se hur många produkter som finns kvar i lagret för att veta att produkten jag vill ha finns tillgänglig.
 
 6. Som kund vill jag kunna söka på produkter efter namn för att hitta det jag letar efter.
+
+
+### Användaruppgifter:
+
+Användarnamn: Karin75
+Lösenord: 12345
+
+
