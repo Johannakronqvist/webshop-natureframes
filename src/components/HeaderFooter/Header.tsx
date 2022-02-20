@@ -16,8 +16,6 @@ export default function Header() {
 		setLoggedIn(JSON.parse( localStorage.getItem('loggedin') || '{}').loggedin)
 		setGetUSerStorage(JSON.parse( localStorage.getItem('loggedin') || '{}'))
 
-		//om true visa möjlighet till checkout
-		//annars visa "log in  to continue to checkout"
 	}, [])
 
 	useEffect(()=> {
@@ -46,6 +44,7 @@ export default function Header() {
 				<div className='iconContainer'> { !loggedIn ? <IoIosLogIn className='faIcon' onClick={ () => setSignIn('showLogInForm') } /> : <IoIosLogOut className='faIcon' onClick={ handleClick } /> } <span className='iconTexts' > {loggedIn ? 'Sign out' : 'Sign in'} </span> </div>
 			</div>
 		</header>
+
 		<section className={signIn} >
 			<Login loggedIn={loggedIn} setLoggedIn={setLoggedIn} setSignIn={setSignIn}/> 
 		</section>

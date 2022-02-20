@@ -27,6 +27,7 @@ export default function Login({loggedIn, setLoggedIn, setSignIn}: Props) {
 						 username: userData[i].user_name, 
 						 id: userData[i].id, 
 						 loggedin: true, 
+             address: userData[i].adress,
 						 cart: cartData.cart ? cartData.cart : userData[i].cart_items 
 						}
 
@@ -59,10 +60,12 @@ export default function Login({loggedIn, setLoggedIn, setSignIn}: Props) {
 				<div>
 					<label>Username</label>
 					<input type='text' onChange={ event => setUserName(event.target.value) } className={validationUserName} />
+          <span className={ validationUserName === 'unValid' ? 'show validationMessage' : 'hide' } >Username is not valid</span>
 				</div>
 				<div>
 					<label>Password</label>
 					<input type='password' onChange={ event => setPassWord(event.target.value) } className={validationPassword} />
+          <span className={ validationPassword === 'unValid' ? 'show validationMessage' : 'hide' }>Password is not valid</span>
 				</div>
 				</div>
 			<div>

@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Red+Hat+Mono:wght@300&family=Rock+Salt&display=swap');
 
 :root {
-	--main-color: #FCFBFA; 
+	--main-color: #fcfbfa;
 	--accent-color: #343333;
 	--black: #000;
 
@@ -9,11 +9,26 @@
 	--body-font: 'Red Hat Mono';
 }
 
-.searchBox {
-	background-color: var(--black);
+.searchBoxContainer {
+	border: 2px solid;
+	padding-bottom: 1rem;
+	display: flex;
+	background-color: var(--black) !important;
 }
 
-.productContainer h2, p {
+.searchBoxContainer form {
+	background-color: var(--black) !important;
+}
+
+.searchBoxContainer form label {
+	background-color: var(--black);
+	color: var(--main-color);
+}
+.searchBoxContainer form input {
+	border: none;
+}
+.productContainer h2,
+p {
 	font-size: 1rem;
 }
 
@@ -42,7 +57,7 @@
 
 .stock {
 	font-size: 0.8rem;
-	padding: 0.5rem 0; 
+	padding: 0.5rem 0;
 }
 
 .addToCartBtn {

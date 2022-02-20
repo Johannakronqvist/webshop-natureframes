@@ -2,12 +2,9 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './cart.css';
 import { Product, User } from '../../model/Interfaces';
-import productData from '../../model/productData'
+import productData from '../../model/productData';
 
 interface Props {
-	productData: Product[];
-	setProductData: (val: any) => void;
-	userData: User[];
 	decreaseStock: (val: any) => void;
 	increaseStock: (val: any) => void;
 }
@@ -17,14 +14,15 @@ interface Cart {
 	quantity: number;
 }
 
-export default function Cart({ productData, setProductData, userData, decreaseStock, increaseStock }: Props) {
+export default function Cart({ decreaseStock, increaseStock}: Props) {
 	const [productsInCart, setProductsInCart] = useState<Product[]>([]);
+  const [loggedInUser, setLoggedInUser] = useState('');
 
 	useEffect(() => {
 		//Get cart from localstorage
 		const getCartData = JSON.parse(
 			localStorage.getItem('loggedin') || '[]'
-		).cart;
+		);
 
 		const getProductData = JSON.parse(
 			localStorage.getItem('productdata') || '[]'
@@ -32,9 +30,9 @@ export default function Cart({ productData, setProductData, userData, decreaseSt
 
 		let productArray: Product[] = [];
 
-		if(getCartData){
+		if (getCartData.cart) {
 			getProductData.map((product: Product) => {
-				getCartData.forEach((cartObject: Cart) => {
+				getCartData.cart.forEach((cartObject: Cart) => {
 					if (product.id === cartObject.id) {
 						productArray.push(product);
 					}
@@ -42,13 +40,15 @@ export default function Cart({ productData, setProductData, userData, decreaseSt
 			});
 		}
 
+    console.log('address', getCartData.address)
 		setProductsInCart(productArray);
-		
+    setLoggedInUser(getCartData.address);
+
 	}, []);
 
 	function decreaseSaldo(product: Product) {
-		const copyProduct = product
-		decreaseStock(copyProduct) 
+		const copyProduct = product;
+		decreaseStock(copyProduct);
 
 		const getCartData = JSON.parse(
 			localStorage.getItem('loggedin') || '[]'
@@ -70,8 +70,8 @@ export default function Cart({ productData, setProductData, userData, decreaseSt
 	}
 
 	const increaseSaldo = (product: Product) => {
-		const copyProduct = product
-		increaseStock(copyProduct)
+		const copyProduct = product;
+		increaseStock(copyProduct);
 
 		const getCartData = JSON.parse(
 			localStorage.getItem('loggedin') || '[]'
@@ -92,11 +92,35 @@ export default function Cart({ productData, setProductData, userData, decreaseSt
 		setProductsInCart(productArray);
 	};
 
-	let total = 0;
-	productsInCart.forEach(el => {
-		total += el.price * el.orderedQuantity
-	})
+  function deleteFromCart(product: Product) {
 
+    const copyProductsInCart = productsInCart
+
+    const updatedCart = copyProductsInCart.filter( productObj => {
+      return productObj.id !== product.id
+    })
+
+    let getShoppingStatus =  JSON.parse(localStorage.getItem('loggedin') || '[]')
+    getShoppingStatus.cart = updatedCart
+
+    localStorage.setItem('loggedin', JSON.stringify(getShoppingStatus))
+    setProductsInCart(updatedCart)
+
+    }
+
+	let total = 0;
+	productsInCart.forEach((el) => {
+		total += el.price * el.orderedQuantity;
+	});
+
+  // const loggedInUserAddress = loggedInUser ? 
+  // <ul className='adressContainer'>
+  //   <h4>Shipping address</h4>
+  //   <li><h5>Street:</h5> {loggedInUser.street}</li>
+  //   <li><h5>Area code:</h5> {loggedInUser.area_code} <h5>City:</h5> {loggedInUser.city}</li>
+  // </ul>
+  // :
+  // <p>Please sign in to checkout</p>
 
 	return (
 		<>
@@ -112,10 +136,11 @@ export default function Cart({ productData, setProductData, userData, decreaseSt
 								<div>
 									<h2>{product.name}</h2>
 									<p>{product.price} sek </p>
-									<section>
-										<button onClick={() => increaseSaldo(product)}>-</button>
-										<span> {product.orderedQuantity}</span>
-										<button onClick={() => decreaseSaldo(product)}>+</button>
+									<section className='qtyCounter'>
+										<button onClick={() => increaseSaldo(product)}> - </button>
+										<div className='qtyOrdered'> {product.orderedQuantity}</div>
+										<button onClick={() => decreaseSaldo(product)}> + </button>
+                    <button className='deleteBtn' onClick={ () => deleteFromCart(product) }> X </button>
 									</section>
 								</div>
 							</li>
@@ -123,9 +148,10 @@ export default function Cart({ productData, setProductData, userData, decreaseSt
 					</ul>
 				</section>
 				<section className='rightSection'>
-					<h3>Total: {total}</h3>
-
-
+					<h3>Total: {total} sek</h3>
+          {/* <section>
+            {loggedInUserAddress}
+          </section> */}
 				</section>
 			</div>
 		</>

@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Red+Hat+Mono:wght@300&family=Rock+Salt&display=swap');
 
 :root {
-	--main-color: #FCFBFA; 
+	--main-color: #fcfbfa;
 	--accent-color: #343333;
 	--black: #000;
 
@@ -12,9 +12,7 @@
 .container {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
-	grid-template-areas: 
-	'left-section right-section'
-	;
+	grid-template-areas: 'left-section right-section';
 }
 
 .leftSection {
@@ -51,14 +49,15 @@
 }
 
 .cartItemsContainer li img {
-	margin: 0rem ;
+	margin: 0rem;
 	height: 100%;
 	border: 2px solid black;
 }
 
-.cartItemsContainer li h2, .cartItemsContainer li p {
+.cartItemsContainer li h2,
+.cartItemsContainer li p {
 	font-size: 90%;
-	margin: 1rem ;
+	margin: 1rem;
 }
 
 .cartItemsContainer li section {
@@ -68,4 +67,12 @@
 .cartItemsContainer li section button {
 	padding: 1px;
 	border: 1px solid;
+}
+.qtyCounter {
+	display: flex;
+}
+
+.qtyOrdered {
+	margin: 4px;
+	text-align: center;
 }

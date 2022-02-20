@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation} from 'react-router-dom';
 import products from './model/productData';
 import users from './model/userData';
 import './App.css';
@@ -9,7 +9,14 @@ import Cart from './components/Cart/Cart';
 import Footer from './components/HeaderFooter/Footer';
 import {Product} from './model/Interfaces'
 
-function App() {
+
+export const LocationDisplay = () => {
+  const location = useLocation()
+
+  return <div data-testid="location-display">{location.pathname}</div>
+}
+
+export function App() {
 	const [productData, setProductData] = useState([]);
 	const [userData, setUserData] = useState([]);
 
@@ -98,8 +105,6 @@ function App() {
 					element={
 						<StartPage
 							productData={productData}
-							setProductData={setProductData}
-							userData={userData}
 							decreaseStock={decreaseStock}
 						/>
 					}
@@ -108,9 +113,6 @@ function App() {
 					path='cart'
 					element={
 						<Cart
-							productData={productData}
-							setProductData={setProductData}
-							userData={userData}
 							decreaseStock={decreaseStock}
 							increaseStock={increaseStock}
 						/>

@@ -6,10 +6,10 @@ import {Router} from 'react-router-dom'
 import Cart from './Cart'
 import Header from '../HeaderFooter/Header'
 
-describe('Cart page component', () => {
-	// test('test that cart component renders', () => {
+//describe('Cart page component', () => {}
+	//test('test that cart component renders', () => {
 	// 	render(
-	// 		<MemoryRouter> <Cart/> </MemoryRouter>
+	// 		<MemoryRouter> <Cart decreaseStock={decreaseStock} increaseStock={increaseStock}/> </MemoryRouter>
 	// 	)
 	// } )
 
@@ -28,4 +28,4 @@ describe('Cart page component', () => {
 
 	// 	expect(productText).toBeInTheDocument()
 	// } )
-})
+//})

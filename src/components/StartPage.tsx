@@ -5,15 +5,11 @@ import './startPage.css';
 
 interface Props {
 	productData: Product[];
-	setProductData: (val: any) => void;
-	userData: User[];
 	decreaseStock: (val: any) => void;
 }
 
 export default function StartPage({
 	productData,
-	setProductData,
-	userData,
 	decreaseStock,
 }: Props) {
 	const [searchValue, setSearchValue] = useState('');
@@ -74,7 +70,14 @@ export default function StartPage({
 	return (
 		<div>
 			<section className='searchBoxContainer'>
-				<input onChange={(e) => setSearchValue(e.target.value)} type='text' />
+				<form>
+					<label htmlFor='search'> What are you looking for? </label>
+					<input
+						onChange={(e) => setSearchValue(e.target.value)}
+						type='text'
+						name='search'
+					/>
+				</form>
 			</section>
 			<ul className='productContainer'>
 				{productToShow.map((product: Product) => (
