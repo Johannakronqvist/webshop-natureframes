@@ -46,7 +46,7 @@ export default function Header() {
 		</header>
 
 		<section className={signIn} >
-			<Login loggedIn={loggedIn} setLoggedIn={setLoggedIn} setSignIn={setSignIn}/> 
+			<Login setLoggedIn={setLoggedIn} setSignIn={setSignIn}/> 
 		</section>
 		</>
 	 )

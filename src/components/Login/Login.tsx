@@ -2,12 +2,11 @@ import React, { FormEvent, useState, useEffect } from 'react'
 import './login.css'
 
 interface Props {
-	loggedIn: boolean,
 	setLoggedIn: (logged: boolean) => void,
 	setSignIn: (sign: string) => void
 }
 
-export default function Login({loggedIn, setLoggedIn, setSignIn}: Props) {
+export default function Login({setLoggedIn, setSignIn}: Props) {
 	const [username, setUserName] = useState<string>('')
 	const [password, setPassWord] = useState<string>('')
 	const [validationUserName, setvalidationUserName] = useState<string>('')
@@ -50,7 +49,6 @@ export default function Login({loggedIn, setLoggedIn, setSignIn}: Props) {
 				}
 			}
 	}
-
 
 	return (
 		<>

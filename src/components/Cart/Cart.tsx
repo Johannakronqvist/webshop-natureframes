@@ -140,7 +140,7 @@ export default function Cart({ decreaseStock, increaseStock}: Props) {
 										<button onClick={() => increaseSaldo(product)}> - </button>
 										<div className='qtyOrdered'> {product.orderedQuantity}</div>
 										<button onClick={() => decreaseSaldo(product)}> + </button>
-                    <button className='deleteBtn' onClick={ () => deleteFromCart(product) }> X </button>
+                    <button className='deleteBtn' onClick={ () => deleteFromCart(product) }>X</button>
 									</section>
 								</div>
 							</li>
