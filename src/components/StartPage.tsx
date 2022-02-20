@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { Product, User, Cart } from '../model/Interfaces';
 import './startPage.css';
 

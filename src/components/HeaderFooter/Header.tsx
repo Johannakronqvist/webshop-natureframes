@@ -40,7 +40,7 @@ export default function Header() {
 			<h1>NATUREFRAMES</h1> 
 			<div className='iconsContainer'>
 				<a href="" className={loggedIn ? 'loggedIn iconContainer' : 'loggedOut'}> <AiOutlineUser className='faIcon' /> <span className='iconTexts' > User: {loggedIn ?  getUserStorage.name : ''}</span> </a>
-				<Link to='/cart' className='iconContainer'> <AiOutlineShoppingCart className='faIcon'/></Link>
+				<Link to='/cart' className='iconContainer' data-testid="cart-link"> <AiOutlineShoppingCart className='faIcon'/></Link>
 				<div className='iconContainer'> { !loggedIn ? <IoIosLogIn className='faIcon' onClick={ () => setSignIn('showLogInForm') } /> : <IoIosLogOut className='faIcon' onClick={ handleClick } /> } <span className='iconTexts' > {loggedIn ? 'Sign out' : 'Sign in'} </span> </div>
 			</div>
 		</header>

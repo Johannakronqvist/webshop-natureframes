@@ -1,5 +1,4 @@
-import React from 'react'
-import {render, screen} from '@testing-library/react'
+import {render, screen, fireEvent, findByText} from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { MemoryRouter as Router} from 'react-router-dom'
 import Cart from './Cart'
@@ -62,14 +61,17 @@ describe('Cart page component', () => {
 
 		expect(productText).toBeInTheDocument()
 	})
+  
+  test("total amount is 0 when cart is empty", async () => {
+    render(
+      <Router>
+        <Cart decreaseStock={decreaseStock} increaseStock={increaseStock}/> 
+      </Router>
+    )
 
-  test('that product gets deleted when the X is pressed', () => {
-    render(<StartPage productData={productData} decreaseStock={decreaseStock}/>)
+    const totalPrice = await screen.findByText("Total: 0 sek")
 
-		const productButtons = screen.getAllByRole('button', {name: 'add to cart'})
-
-    console.log('Add to cart btns: ', productButtons[0])
-
-   })
+    expect(totalPrice).toBeInTheDocument()
+  })
 
 })

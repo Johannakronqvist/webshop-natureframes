@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Routes, Route, useLocation} from 'react-router-dom';
 import products from './model/productData';
 import users from './model/userData';

@@ -68,11 +68,28 @@
 	padding: 1px;
 	border: 1px solid;
 }
+
 .qtyCounter {
 	display: flex;
+  align-items: center;
+}
+
+.qtyCounter button{
+	padding: 0 0.4rem !important;
 }
 
 .qtyOrdered {
 	margin: 4px;
 	text-align: center;
+}
+
+.deleteBtn {
+  border: none !important;
+  margin: 8px !important;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.deleteBtn:hover {
+  color: red;
 }

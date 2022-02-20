@@ -148,10 +148,7 @@ export default function Cart({ decreaseStock, increaseStock}: Props) {
 					</ul>
 				</section>
 				<section className='rightSection'>
-					<h3>Total: {total} sek</h3>
-          {/* <section>
-            {loggedInUserAddress}
-          </section> */}
+					<h2>Total: {total} sek</h2>
 				</section>
 			</div>
 		</>
